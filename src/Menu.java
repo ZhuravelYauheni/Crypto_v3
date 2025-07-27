@@ -20,10 +20,8 @@ public class Menu {
     private static final String ENTER_INPUT_FILE = "Укажите исходный файл *.txt";
     private static final String ENTER_OUTPUT_FILE = "Укажите итоговый файл *.txt";
     private static final String ENTER_KEY = "Введите ключ шифрования";
-    private static final String ENTER_DATA = "Введите  по порядку: 1) адрес исходного *.txt, 2) адрес итогового *.txt, 3) значение ключа шифровщика";
     private static final String DONE = "Готово!";
     private static int menuShownCounter = 0;
-    private static int option;
 
     private static void showMainMenu() {
         if (menuShownCounter == 0) {
@@ -85,7 +83,7 @@ public class Menu {
                 case "5":
                     System.out.println(BYE);
                     scanner.close();
-                    return; // Выход из метода
+                    return;
                 default:
                     System.out.println(WRONGCHOICE);
             }
