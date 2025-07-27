@@ -1,5 +1,7 @@
 public class Cypher {
 
+    // Здесь логика шифрования и дешифрования шрифта Цезаря
+
     private final Alphabet alphabet;
 
     public Cypher(Alphabet alphabet) {

@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.List;
 
+// Класс, экземпляры которого отвечают за чтение и запись текстовых файлов ("работа с БД")
+
 public class FileManager {
     public List<String> readFile(String fileName) {
         try {

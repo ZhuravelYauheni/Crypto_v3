@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+// Класс, обрабатывающий логику вброса исключения, связанного с файлами
+
 public class FileChecker {
 
     private static final List<String> PROHIBITED_DIRS = List.of("C:\\Windows", "C:\\Program Files");

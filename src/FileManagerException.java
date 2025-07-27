@@ -1,4 +1,5 @@
 public class FileManagerException extends RuntimeException {
+    // исключение на случай недопустимых/неверных файлов и папок
     String message;
     public FileManagerException(String message) {
         this.message = message;

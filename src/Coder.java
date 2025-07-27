@@ -1,6 +1,10 @@
 import java.util.List;
 
+// Класс, ответственный за композицию задействованных при шифровании и дешифровании по ключу сущностей,
+// Связывает воедино необходимые экземпляры других классов
+
 public class Coder {
+
     private Cypher cypher;
     private FileManager fileManager;
     private FileChecker fileChecker;
