@@ -1,8 +1,5 @@
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.List;
 
 public class FileManager {
@@ -18,7 +15,8 @@ public class FileManager {
     public void writeFile(String fileName, String content) {
         try {
             Path filepath = Path.of(fileName);
-            Files.writeString(filepath, content);
+            Files.writeString(filepath, content, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.writeString(filepath, "\n", StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException e) {
             throw new FileManagerException(e.getMessage(), e);
         }

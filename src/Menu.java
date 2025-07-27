@@ -17,12 +17,13 @@ public class Menu {
     private static final String CASE_5 = "5 - завершить программу";
     private static final String BYE = "Дай вам бог здоровьечка!";
     private static final String WRONGCHOICE = "Выберите один из предлагаемых вариантов";
+    private static final String ENTER_INPUT_FILE = "Укажите исходный файл *.txt";
+    private static final String ENTER_OUTPUT_FILE = "Укажите итоговый файл *.txt";
+    private static final String ENTER_KEY = "Введите ключ шифрования";
+    private static final String ENTER_DATA = "Введите  по порядку: 1) адрес исходного *.txt, 2) адрес итогового *.txt, 3) значение ключа шифровщика";
+    private static final String DONE = "Готово!";
     private static int menuShownCounter = 0;
     private static int option;
-
-    public static String getWrongchoice(){
-        return WRONGCHOICE;
-    }
 
     private static void showMainMenu() {
         if (menuShownCounter == 0) {
@@ -42,10 +43,11 @@ public class Menu {
     }
 
     public static void menuNavigation() {
-        Scanner scanner = new Scanner(System.in); // Выносим Scanner на уровень класса
+        Scanner scanner = new Scanner(System.in);
+        // Выносим Scanner на уровень класса
 
         while (true) {
-            showMainMenu();
+                showMainMenu();
             String input = scanner.nextLine();
 
             switch (input) {
@@ -53,10 +55,26 @@ public class Menu {
                     Info.showInfo();
                     break;
                 case "1":
-
+                    Coder coderEn = new Coder();
+                    System.out.println(ENTER_INPUT_FILE);
+                    String inputEnFile = scanner.nextLine();
+                    System.out.println(ENTER_OUTPUT_FILE);
+                    String outputEnFile = scanner.nextLine();
+                    System.out.println(ENTER_KEY);
+                    Integer keyEn = Integer.parseInt(scanner.nextLine());
+                    coderEn.encode(inputEnFile, outputEnFile, keyEn);
+                    System.out.println(DONE);
                     break;
                 case "2":
-
+                    Coder coderDe = new Coder();
+                    System.out.println(ENTER_INPUT_FILE);
+                    String inputDeFile = scanner.nextLine();
+                    System.out.println(ENTER_OUTPUT_FILE);
+                    String outputDeFile = scanner.nextLine();
+                    System.out.println(ENTER_KEY);
+                    Integer keyDe = Integer.parseInt(scanner.nextLine());
+                    coderDe.decode(inputDeFile, outputDeFile, keyDe);
+                    System.out.println(DONE);
                     break;
                 case "3":
                     System.out.println("тут завал");

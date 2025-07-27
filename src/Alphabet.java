@@ -8,8 +8,9 @@ public class Alphabet {
     };
 
     private static final Character[] SYMBOLS = {
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
         '.', ',', '"', ':', ';', '-', '!', '?', '#',
-            '$', '%', '&', '\'', '(', ')', '*', '+',
+        ' ', '$', '%', '&', '\'', '(', ')', '*', '+',
     };
 
     private final List<Character> alphabet;
