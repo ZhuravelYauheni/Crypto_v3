@@ -68,7 +68,7 @@ public class BruteForceDecoder {
         FileManager fileManager = new FileManager();
         List<String> encryptedLines = fileManager.readFile(inputFile);
 
-        int totalKeys = 33;
+        int totalKeys = alphabet.size();
         ProgressBar progressBar = new ProgressBar(totalKeys, 50);
         System.out.println("Выполняется подбор ключа:");
 
