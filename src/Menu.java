@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-public class Menu {
     /*
     Класс отображает меню, позволяет юзеру через консоль взаимодействовать с прогой, генерирует задачи для "бекенда"
      */
-    private Menu() {
-    }
+
+public class Menu {
 
     private static final String TITLE = "Это крипто-анализатор";
     private static final String NAVIGATE = "Для навигации по меню используйте цифровые клавиши (NumPad) от 0 до 5";

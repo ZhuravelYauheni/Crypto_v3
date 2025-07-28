@@ -27,4 +27,8 @@ public class Cypher {
         return outputLine.toString();
     }
 
+    public int size() {
+        return alphabet.size();
+    }
+
 }
