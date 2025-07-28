@@ -1,9 +1,10 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-public class BruteForce {
-
-    public static final List<String> COMMON_WORDS = Arrays.asList(
+public class BruteForceDecoder {
+    private final Coder coder;
+    private final Alphabet alphabet;
+    private static final List<String> COMMON_WORDS = List.of(
             " ", "и", "в", "не", "что", "он", "на", "я", "с", "как", "а",
             "то", "все", "она", "так", "его", "но", "да", "ты", "к", "у",
             "же", "вы", "за", "бы", "по", "только", "ее", "мне", "было", "вот",
@@ -49,18 +50,65 @@ public class BruteForce {
             "уже", "улица", "уметь", "умный", "упал", "услышал", "успокоился", "устал", "ушел", "хороший",
             "хорошо", "хотел", "хотеть", "хоть", "хотя", "час", "часто", "часть", "человек", "чем",
             "через", "что", "чтоб", "чтобы", "чувствовал", "чуть", "шепотом", "эта", "эти", "это",
-            "этого", "этой", "этом", "этот", "является", "ясно");
+            "этого", "этой", "этом", "этот", "является", "ясно"
+    );
 
-    private Cypher cypher;
-    private FileManager fileManager;
-    private FileChecker fileChecker;
-
-    public BruteForce() {
-        this.cypher = new Cypher(new Alphabet());
-        this.fileManager = new FileManager();
-        this.fileChecker = new FileChecker();
+    public BruteForceDecoder(Alphabet alphabet) {
+        this.alphabet = alphabet;
+        this.coder = new Coder();
     }
 
-    // Здесь будет логика взлома шифра путём подбора ключа
+    public int bruteForce(String inputFile, String outputFile) {
+        FileManager fileManager = new FileManager();
+        List<String> encryptedLines = fileManager.readFile(inputFile);
 
+        // Создаем прогресс-бар
+        int totalKeys = 33; // Для русского алфавита
+        ProgressBar progressBar = new ProgressBar(totalKeys, 50);
+        System.out.println("Выполняется подбор ключа:");
+
+        int bestKey = 0;
+        int bestScore = -1;
+        List<String> bestText = new ArrayList<>();
+
+        for (int key = 0; key < totalKeys; key++) {
+            List<String> decryptedLines = new ArrayList<>();
+            int currentScore = 0;
+
+            for (String line : encryptedLines) {
+                String decryptedLine = new Cypher(alphabet).decode(line, key);
+                decryptedLines.add(decryptedLine);
+                currentScore += evaluateText(decryptedLine);
+            }
+
+            if (currentScore > bestScore) {
+                bestScore = currentScore;
+                bestKey = key;
+                bestText = decryptedLines;
+            }
+
+            // Обновляем прогресс-бар
+            progressBar.update(key + 1);
+        }
+
+        // Записываем результат
+        for (String line : bestText) {
+            fileManager.writeFile(outputFile, line);
+        }
+
+        progressBar.complete();
+        return bestKey;
+    }
+
+    // Метод для оценки осмысленности текста
+    private int evaluateText(String text) {
+        String[] words = text.split("[^а-яё]+");
+        int score = 0;
+        for (String word : words) {
+            if (COMMON_WORDS.contains(word)) {
+                score += word.length();
+            }
+        }
+        return score;
+    }
 }

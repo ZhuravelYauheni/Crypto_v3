@@ -74,7 +74,14 @@ public class Menu {
                     System.out.println(DONE);
                     break;
                 case "3":
-                    System.out.println("тут завал");
+                    System.out.println(ENTER_INPUT_FILE);
+                    String inputBruteFile = scanner.nextLine();
+                    System.out.println(ENTER_OUTPUT_FILE);
+                    String outputBruteFile = scanner.nextLine();
+                    BruteForceDecoder bruteForceDecoder = new BruteForceDecoder(new Alphabet());
+                    int foundKey = bruteForceDecoder.bruteForce(inputBruteFile, outputBruteFile);
+                    System.out.println("Найден наиболее вероятный ключ: " + foundKey);
+                    System.out.println(DONE);
                     break;
                 case "4":
                     System.out.println("тут вообще ничего не понятно");
