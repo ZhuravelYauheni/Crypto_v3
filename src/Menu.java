@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
     /*
-    Класс отображает меню, позволяет юзеру через консоль взаимодействовать с прогой, генерирует задачи для "бекенда"
+    Класс отображает меню, позволяет юзеру через консоль взаимодействовать с прогой, оформляет задачи для "бекенда"
      */
 
 public class Menu {
@@ -41,12 +41,9 @@ public class Menu {
 
     public static void menuNavigation() {
         Scanner scanner = new Scanner(System.in);
-        // Выносим Scanner на уровень класса
-
         while (true) {
                 showMainMenu();
             String input = scanner.nextLine();
-
             switch (input) {
                 case "0":
                     Info.showInfo();
