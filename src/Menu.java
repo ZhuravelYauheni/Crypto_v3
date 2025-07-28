@@ -19,6 +19,7 @@ public class Menu {
     private static final String ENTER_INPUT_FILE = "Укажите исходный файл *.txt";
     private static final String ENTER_OUTPUT_FILE = "Укажите итоговый файл *.txt";
     private static final String ENTER_KEY = "Введите ключ шифрования";
+    private static final String FOUND_KEY = "Найден наиболее вероятный ключ: ";
     private static final String DONE = "Готово!";
     private static int menuShownCounter = 0;
 
@@ -77,7 +78,7 @@ public class Menu {
                     String outputBruteFile = scanner.nextLine();
                     BruteForceDecoder bruteForceDecoder = new BruteForceDecoder(new Alphabet());
                     int foundKey = bruteForceDecoder.bruteForce(inputBruteFile, outputBruteFile);
-                    System.out.println("Найден наиболее вероятный ключ: " + foundKey);
+                    System.out.println(FOUND_KEY + foundKey);
                     System.out.println(DONE);
                     break;
                 case "4":

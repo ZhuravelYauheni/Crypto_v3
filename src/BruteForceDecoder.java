@@ -68,8 +68,7 @@ public class BruteForceDecoder {
         FileManager fileManager = new FileManager();
         List<String> encryptedLines = fileManager.readFile(inputFile);
 
-        // Создаем прогресс-бар
-        int totalKeys = 33; // Для русского алфавита
+        int totalKeys = 33;
         ProgressBar progressBar = new ProgressBar(totalKeys, 50);
         System.out.println("Выполняется подбор ключа:");
 
@@ -93,11 +92,9 @@ public class BruteForceDecoder {
                 bestText = decryptedLines;
             }
 
-            // Обновляем прогресс-бар
             progressBar.update(key + 1);
         }
 
-        // Записываем результат
         for (String line : bestText) {
             fileManager.writeFile(outputFile, line);
         }
@@ -106,7 +103,7 @@ public class BruteForceDecoder {
         return bestKey;
     }
 
-    // Метод для оценки осмысленности
+    // оценка (рейтинг) ключа
     private int evaluateText(String text) {
         String[] words = text.split("[^а-яё]+");
         int score = 0;

@@ -5,7 +5,7 @@
 public class ProgressBar {
     private final int totalSteps;
     private int currentStep;
-    private final int width; // Ширина прогресс-бара в символах
+    private final int width;
 
     public ProgressBar(int totalSteps, int width) {
         this.totalSteps = totalSteps;
@@ -27,7 +27,7 @@ public class ProgressBar {
         float progress = (float) currentStep / totalSteps;
         int filledWidth = (int) (progress * width);
 
-        System.out.print("\r["); // \r возвращает каретку в начало
+        System.out.print("\r[");
         for (int i = 0; i < width; i++) {
             if (i < filledWidth) {
                 System.out.print("=");
@@ -44,6 +44,6 @@ public class ProgressBar {
     public void complete() {
         currentStep = totalSteps;
         print();
-        System.out.println(); // Переход на новую строку после завершения
+        System.out.println();
     }
 }
