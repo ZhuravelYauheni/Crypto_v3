@@ -1,3 +1,7 @@
+
+// взлом перебором для больших файлов (Война и Мир, например) занимает продолжительное время
+// Этот класс добавляет шкалу прогресса в консоли для метода BruteForce во время его работы
+
 public class ProgressBar {
     private final int totalSteps;
     private int currentStep;

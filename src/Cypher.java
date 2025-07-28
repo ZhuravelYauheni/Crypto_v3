@@ -1,6 +1,6 @@
 public class Cypher {
 
-    // Здесь логика шифрования и дешифрования шрифта Цезаря
+    // Здесь логика шифрования и дешифрования шрифта Цезаря, а также костыль, возвращающий длину вложенного алфавита.
 
     private final Alphabet alphabet;
 
@@ -26,9 +26,4 @@ public class Cypher {
         }
         return outputLine.toString();
     }
-
-    public int size() {
-        return alphabet.size();
-    }
-
 }
