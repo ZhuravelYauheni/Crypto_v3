@@ -23,7 +23,7 @@ public class ProgressBar {
         float progress = (float) currentStep / totalSteps;
         int filledWidth = (int) (progress * width);
 
-        System.out.print("\r["); // \r возвращает каретку в начало строки
+        System.out.print("\r["); // \r возвращает каретку в начало
         for (int i = 0; i < width; i++) {
             if (i < filledWidth) {
                 System.out.print("=");

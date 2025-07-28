@@ -100,7 +100,7 @@ public class BruteForceDecoder {
         return bestKey;
     }
 
-    // Метод для оценки осмысленности текста
+    // Метод для оценки осмысленности
     private int evaluateText(String text) {
         String[] words = text.split("[^а-яё]+");
         int score = 0;
